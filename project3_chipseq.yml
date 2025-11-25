@@ -1,0 +1,11 @@
+name: project3_chipseq
+channels:
+- conda-forge
+- bioconda
+
+dependencies:
+- ipykernel=6.29.5
+- pandas
+- python=3.10
+- matplotlib
+- seaborn

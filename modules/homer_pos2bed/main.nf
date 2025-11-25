@@ -1,12 +1,23 @@
 #!/usr/bin/env nextflow
 
 process POS2BED {
+    label 'process_single'
+    container 'ghcr.io/bf528/homer_samtools:latest'
+    publishDir params.outdir, mode: 'copy'
 
+    input:
+    tuple val(rep), path(homer_txt)
+
+    output:
+    path("${rep}.bed"), emit: peaks_bed
+
+    script:
+    """
+    pos2bed.pl ${homer_txt} > ${rep}.bed
+    """
 
     stub:
     """
     touch ${homer_txt.baseName}.bed
     """
 }
-
-

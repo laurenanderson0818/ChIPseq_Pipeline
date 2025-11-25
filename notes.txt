@@ -1,0 +1,34 @@
+PROJECT THREE NOTES
+- full files and subset files (.subset.fastq.gz)
+- trim reads with low quality bases or remove adapter contamination
+    - bowtie2 is not capable, so we have to do this step (trimmomatic)
+    - trimmomatic -> Bolger et al.
+        - single-end
+        - java -jar trimmomatic-0.35.jar SE -phred33 input.fq.gz output.fq.gz ILLUMINACLIP:TruSeq3-
+          SE:2:30:10 LEADING:3 TRAILING:3 (etc)
+        - default
+- four bigwigs for every sample
+    - every bin in the genome and a count
+    - quality control check
+    - plot the correlation of the quality of bins between samples
+        - describes relatedness between samples
+        - expect inputs to be roughly similar to each other
+    - generate a visualization
+        - density of signal at different points to see where most of binding is occurring
+        - example: deeptools.readthedocs.io/en/develop/content/tools/plotProfile.html
+        - plotting the binding of our factor
+- same qc steps, add samtools flag step, multiqc
+    - comment about the quality we see
+    - hinted that there might be something weird...
+- p calling with HOMER
+    - on perform peak calling twice on the two replicates
+    - manipulate channel to only run twice on the two replicates
+    - creates a text file that needs to be converted to BED file
+        - region files
+        - use bedtools to come up with a single peak
+- single set of consensus peaks
+    - remove any region that overlaps the blacklist regions
+    - EVEN A SINGLE BASE PAIR
+- look for enrichment in the genes that these peaks are annotated to
+    - use the peaks to look for repeated factors sequence
+    - known motifs can tell you what your factor is or the binding of other factors

@@ -1,7 +1,22 @@
 #!/usr/bin/env nextflow
 
 process BOWTIE2_ALIGN {
-   
+    label 'process_high'
+    container 'ghcr.io/bf528/bowtie2:latest'
+    publishDir params.outdir, mode: 'copy'
+
+    input:
+    tuple val(sample_id), path(trimmed_reads)
+    path bt2
+    val name
+
+    output:
+    tuple val(sample_id), path('*bam'), emit: bam
+
+    script:
+    """
+    bowtie2 -p $task.cpus -x $bt2/$name -U ${trimmed_reads} | samtools view -bS - > ${sample_id}.bam
+    """
 
     stub:
     """
