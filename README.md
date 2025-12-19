@@ -11,4 +11,4 @@ Citation: Barutcu AR, Hong D, Lajoie BR, McCord RP, van Wijnen AJ, Lian JB, Stei
 #### Deliverables
 1. main.nf (Nextflow workflow)
 2. README.md (Introduction)
-3. ChIP-seq_Report.ipynb (Methods, Discussion, and Figure Reproduction)
+3. ChIPseq_Report.ipynb (Methods, Discussion, and Figure Reproduction)
