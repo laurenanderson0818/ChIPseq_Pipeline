@@ -1,32 +1,14 @@
-# Project 3 Nextflow Template
+#### Project Description
+Developed a full bioinformatics pipeline for a real-world dataset, focusing on the principles of reproducibility and portability. The publication completed chromatin immunoprecipitation followed by sequencing (ChIPseq). This project generated an end-to-end pipeline to replicate the experiment and recreated some of their key figures.
 
-For this project, remember to keep in a few things:
 
-1. Most of the required references and files can be found in your `nextflow.config`
+#### Introduction
+The biological background of this study is studying the transcription factor RUNX1 and its roles in development and cancer. RUNX1 acts as either an oncogene or tumor suppressor and has been implicated in shaping chromatin structure, enhancer-promoter communication, and genome interactions. Breast cancer is characterized by alterations in higher-order chromatin organization, so understanding RUNX1's role in breast cancer is important. This study was performed to understand how RUNX1 affects the structure of the genome in breast cancer cells and how these changes are linked to changes in gene expression. The authors used bioinformatics techniques like RNA-seq, ChIP-seq, and Hi-C in this experiment. RNA-seq was used to identify changes in gene expression following RUNX1 depletion, ChIP-seq was used to map RUNX1 binding sites and identify where this TF interacts with chromatin, and Hi-C was used to measure 3D chromatic structure when RUNX1 was depleted.
 
-2. Make sure you give each process a label to request an appropriate amount of resources
+Citation: Barutcu AR, Hong D, Lajoie BR, McCord RP, van Wijnen AJ, Lian JB, Stein JL, Dekker J, Imbalzano AN, Stein GS. RUNX1 contributes to higher-order chromatin organization and gene regulation in breast cancer cells. Biochim Biophys Acta. 2016 Nov;1859(11):1389-1397. doi: 10.1016/j.bbagrm.2016.08.003. Epub 2016 Aug 9. PMID: 27514584; PMCID: PMC5071180.
 
-3. Use the singularity containers provided on the website directions for the project
 
-4. I have given you valid stub commands that will let you troubleshoot your workflow logic using the `-stub-run` command
-- The stub-run commands assume that the first element in the tuple from the initial channel is named `sample_id` in processes
-- Ensure that the appropriate inputs for certain processes are a tuple with the first element being the name from the initial channel
-- The findPeaks stub will not be the same as `sample_id`. Remember that you will need to run findPeaks using the paired samples
-(IP_rep1 + INPUT_rep1) and (IP_rep2 + INPUT_rep2). You should name the peak outputs using the replicate (i.e. rep1_peaks.txt and rep2_peaks.txt)
-- You may alter the names used in the stub-run if it's easier for you
-
-The stub runs assume that you have something like below so that it can name the fake files using the sample names - this will ensure
-that your stub runs execute the same number of processes as the full pipeline should.
-```
-input:
-tuple val(sample_id), path(file)
-```
-
-5. Use the subsampled data to start out with - you may need to eventually switch to the full data before your
-pipeline is technically complete as sometimes peak calling may fail if not given enough input reads. 
-- When the pipeline is working, change the `params` value in the original channel to the params encoding the
-location of the full_samplesheet.csv
-
-6. To remove regions using the blacklist, there are optional flags available in the `bedtools intersect` command
-
-7. Create a single jupyter notebook that contains all of the results / figures and your write-up
+#### Deliverables
+1. main.nf (Nextflow workflow)
+2. README.md (Introduction)
+3. ChIP-seq_Report.ipynb (Methods, Discussion, and Figure Reproduction)
