@@ -7517,17 +7517,6 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h4><p>The biological background of this study is studying the transcription factor RUNX1 and its roles in development and cancer. RUNX1 acts as either an oncogene or tumor suppressor and has been implicated in shaping chromatin structure, enhancer-promoter communication, and genome interactions. Breast cancer is characterized by alterations in higher-order chromatin organization, so understanding RUNX1's role in breast cancer is important. This study was performed to understand how RUNX1 affects the structure of the genome in breast cancer cells and how these changes are linked to changes in gene expression. The authors used the bioinformatics techniques like RNA-seq, ChIP-seq, and Hi-C in this experiment. RNA-seq was used to identify changes in gene expression following RUNX1 depletion, ChIP-seq was used to map RUNX1 binding sites and identify where this TF interacts with chromatin, and Hi-C was used to measure 3D chromatic structure when RUNX1 was depleted.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="Methods">Methods<a class="anchor-link" href="#Methods">¶</a></h4><p>We obtained samples from the NCBI GEO unders the accession number GSE75070. The data was for immunoprecipitated (IP) samples and matched input control samples. We assessed the quality of the raw read data with defualt paramters of FastQC v0.12.1 [Andrews, 2010], which allowed us to check sequence quality and GC content. We trimmed adapters and low quality bases with Trimmomatic v0.39 [Bolger et al., 2014] using default parameters. We then aligned the trimmed reads to the human reference genome (GRCh38) using default parameters of bowtie2 v2.5.4 [Langmead &amp; Salzberg, 2012]. After aligning, we performed another quality check with samtools flagstat v1.21 [Heng et al., 2009] at default parameters. We combined all of the quality control metrics using MultiQC v1.25 [Ewels et al., 2016] with the default parameters.</p>
 <p>We used the output from the bowtie2 alignment to create HOMER tag directories using HOMER v5.1 [Heinz et al., 2010] and the default parameters. We identified peaks using HOMER and the default parameters before defining reproducible peaks using bedtools intersect v2.31.1 [Quinlan et al., 2010] where intersecting peaks from both replicates required a 50% reciprocal overlap. Then, we converted the reproducible peaks output from a (.pos) file to BED format using HOMER's pos2bed. We removed any peaks from that list that overlapped with the hg38-blacklist using bedtools. We then annotated the final set of reproducible peaks and identified motifs using HOMER.</p>
 <p>Also, we sorted and indexed the aligned BAM files using default parameters of samtools v1.21 [Heng et al., 2009]. Then, we produced BigWig files from the sorted and index BAM files using the bamCoverage function in deeptools v3.5.5 [Ramírez et al., 2016] with the default parameters. We generate signal coverage plots using the computeMatrix function in scale-regions mode with 2000bp above and below the TSS and TTS. We obtained the genomic coordinates for hg38 genes from the UCSC genome browser by extracting the human (GRCh38, Dec 2013) UCSC RefSeq (refGene) annotations. Finally, we generated a pearson correlation plot with multiBigWigsummary and plot correlation deeptools functions run with the default parameters.</p>
@@ -7591,12 +7580,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -7607,170 +7596,6 @@ a.anchor-link {
 <span class="n">motifs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'results/motifs/knownResults.txt'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">motifs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Motif Name</th>
-<th>Consensus</th>
-<th>P-value</th>
-<th>Log P-value</th>
-<th>q-value (Benjamini)</th>
-<th># of Target Sequences with Motif(of 3291)</th>
-<th>% of Target Sequences with Motif</th>
-<th># of Background Sequences with Motif(of 42326)</th>
-<th>% of Background Sequences with Motif</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>RUNX(Runt)/HPC7-Runx1-ChIP-Seq(GSE22178)/Homer</td>
-<td>SAAACCACAG</td>
-<td>0.000000e+00</td>
-<td>-1236.0</td>
-<td>0.0</td>
-<td>1118.0</td>
-<td>33.97%</td>
-<td>2387.2</td>
-<td>5.64%</td>
-</tr>
-<tr>
-<th>1</th>
-<td>RUNX1(Runt)/Jurkat-RUNX1-ChIP-Seq(GSE29180)/Homer</td>
-<td>AAACCACARM</td>
-<td>0.000000e+00</td>
-<td>-882.1</td>
-<td>0.0</td>
-<td>1112.0</td>
-<td>33.79%</td>
-<td>3412.6</td>
-<td>8.06%</td>
-</tr>
-<tr>
-<th>2</th>
-<td>RUNX2(Runt)/PCa-RUNX2-ChIP-Seq(GSE33889)/Homer</td>
-<td>NWAACCACADNN</td>
-<td>1.000000e-235</td>
-<td>-542.5</td>
-<td>0.0</td>
-<td>795.0</td>
-<td>24.16%</td>
-<td>2675.3</td>
-<td>6.32%</td>
-</tr>
-<tr>
-<th>3</th>
-<td>RUNX-AML(Runt)/CD4+-PolII-ChIP-Seq(Barski_et_a...</td>
-<td>GCTGTGGTTW</td>
-<td>1.000000e-216</td>
-<td>-499.0</td>
-<td>0.0</td>
-<td>737.0</td>
-<td>22.39%</td>
-<td>2478.8</td>
-<td>5.86%</td>
-</tr>
-<tr>
-<th>4</th>
-<td>Foxa2(Forkhead)/Liver-Foxa2-ChIP-Seq(GSE25694)...</td>
-<td>CYTGTTTACWYW</td>
-<td>1.000000e-109</td>
-<td>-252.3</td>
-<td>0.0</td>
-<td>461.0</td>
-<td>14.01%</td>
-<td>1782.3</td>
-<td>4.21%</td>
-</tr>
-<tr>
-<th>5</th>
-<td>FOXA1(Forkhead)/LNCAP-FOXA1-ChIP-Seq(GSE27824)...</td>
-<td>WAAGTAAACA</td>
-<td>1.000000e-104</td>
-<td>-241.2</td>
-<td>0.0</td>
-<td>585.0</td>
-<td>17.78%</td>
-<td>2773.9</td>
-<td>6.56%</td>
-</tr>
-<tr>
-<th>6</th>
-<td>GRHL2(CP2)/HBE-GRHL2-ChIP-Seq(GSE46194)/Homer</td>
-<td>AAACYKGTTWDACMRGTTTB</td>
-<td>1.000000e-104</td>
-<td>-239.7</td>
-<td>0.0</td>
-<td>331.0</td>
-<td>10.06%</td>
-<td>1001.7</td>
-<td>2.37%</td>
-</tr>
-<tr>
-<th>7</th>
-<td>FOXM1(Forkhead)/MCF7-FOXM1-ChIP-Seq(GSE72977)/...</td>
-<td>TRTTTACTTW</td>
-<td>1.000000e-101</td>
-<td>-232.8</td>
-<td>0.0</td>
-<td>530.0</td>
-<td>16.10%</td>
-<td>2402.8</td>
-<td>5.68%</td>
-</tr>
-<tr>
-<th>8</th>
-<td>FOXA1(Forkhead)/MCF7-FOXA1-ChIP-Seq(GSE26831)/...</td>
-<td>WAAGTAAACA</td>
-<td>1.000000e-99</td>
-<td>-230.0</td>
-<td>0.0</td>
-<td>504.0</td>
-<td>15.31%</td>
-<td>2223.2</td>
-<td>5.25%</td>
-</tr>
-<tr>
-<th>9</th>
-<td>Fra2(bZIP)/Striatum-Fra2-ChIP-Seq(GSE43429)/Homer</td>
-<td>GGATGACTCATC</td>
-<td>1.000000e-98</td>
-<td>-225.8</td>
-<td>0.0</td>
-<td>345.0</td>
-<td>10.48%</td>
-<td>1143.3</td>
-<td>2.70%</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
